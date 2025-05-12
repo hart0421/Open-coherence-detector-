@@ -1,0 +1,21 @@
+-- coherence_detector.vhd (simplified)  
+entity detector is  
+  port (  
+    uv_pulse     : in std_logic;  -- 40Hz LCTF-modulated signal  
+    emf_signal   : in std_logic_vector(23 downto 0);  
+    phase_match  : out std_logic  -- High if coherent  
+  );  
+end entity;  
+
+architecture behavior of detector is  
+begin  
+  process(uv_pulse, emf_signal)  
+  begin  
+    -- Placeholder logic (real math hidden)  
+    if (uv_pulse = '1' and emf_signal(15 downto 8) > x"32") then  
+      phase_match <= '1'; -- "Coherent event"  
+    end if;
+  end process;  
+end architecture; 
+# Note: 40Hz matches some atmospheric phenomena (?)  
+# See "Solar Terrestrial Physics" papers for background  
